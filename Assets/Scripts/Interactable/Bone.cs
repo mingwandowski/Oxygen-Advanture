@@ -43,6 +43,7 @@ public class Bone : MonoBehaviour
             ps.Stop();
             ps.Clear();
             coll.enabled = false;
+            GameManager.instance.dialogueSystem.ShowDialogue("go_home");
         }
     }
 

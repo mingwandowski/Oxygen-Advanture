@@ -32,7 +32,7 @@ public class Corgi : MonoBehaviour
     #endregion
 
     private void Awake() {
-        inputControl = new InputControl();
+        inputControl = GameManager.instance.inputControl;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 

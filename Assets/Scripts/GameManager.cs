@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Corgi corgi;
+    public DialogueSystem dialogueSystem;
+    public InputControl inputControl;
 
     private void Awake() {
         // Check if an instance already exists
@@ -18,5 +20,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         // Ensure that this object persists between scenes
         DontDestroyOnLoad(this.gameObject);
+
+        inputControl = new InputControl();
     }
 }
