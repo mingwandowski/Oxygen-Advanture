@@ -21,7 +21,7 @@ public class Corgi : MonoBehaviour
     #endregion
 
     #region States
-    protected CorgiStateMachine StateMachine;
+    public CorgiStateMachine StateMachine;
     public CorgiIdleState idleState;
     public CorgiWalkState walkState;
     public CorgiRunState runState;
@@ -64,7 +64,7 @@ public class Corgi : MonoBehaviour
         isSniffing = inputControl.Gameplay.Sniff.ReadValue<float>() > 0;
         // Test
         if (inputControl.Gameplay.Test.ReadValue<float>() > 0) {
-            UIManager.instance.Notify("press button J to sniff");
+            anim.SetTrigger("sit");
         }
     }
 
