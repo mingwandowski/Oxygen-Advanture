@@ -43,8 +43,13 @@ public class Bone : MonoBehaviour
             ps.Stop();
             ps.Clear();
             coll.enabled = false;
-            GameManager.instance.dialogueSystem.ShowDialogue("go_home");
+            StartCoroutine(ShowDialogue());
         }
+    }
+
+    private IEnumerator ShowDialogue() {
+        yield return new WaitForSeconds(3f);
+        GameManager.instance.dialogueSystem.ShowDialogue("go_home");
     }
 
     private void FollowPlayer() {

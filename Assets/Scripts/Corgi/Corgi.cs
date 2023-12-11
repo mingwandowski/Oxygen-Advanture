@@ -62,10 +62,6 @@ public class Corgi : MonoBehaviour
         StateMachine.CurrentState.Update();
         inputDirection = inputControl.Gameplay.Move.ReadValue<Vector2>();
         isSniffing = inputControl.Gameplay.Sniff.ReadValue<float>() > 0;
-        // Test
-        if (inputControl.Gameplay.Test.ReadValue<float>() > 0) {
-            anim.SetTrigger("sit");
-        }
     }
 
     private void FixedUpdate() {
