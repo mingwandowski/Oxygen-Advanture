@@ -10,6 +10,7 @@ public class Corgi : MonoBehaviour
     [SerializeField] private Transform groundDetect;
     [SerializeField] private float raycastDistance = 0.1f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask enemyLayer;
 
     #region Variables
     public Vector2 inputDirection;
@@ -69,7 +70,8 @@ public class Corgi : MonoBehaviour
     }
 
     public bool IsMoving() => inputDirection.x != 0;
-    public bool IsGrounded() => Physics2D.Raycast(groundDetect.position, Vector2.down, raycastDistance, groundLayer);
+    public bool IsGrounded() => Physics2D.Raycast(groundDetect.position, Vector2.down, raycastDistance, groundLayer)
+                                || Physics2D.Raycast(groundDetect.position, Vector2.down, raycastDistance, enemyLayer);
 
     public void SetVelocity(float xSpeed) {
         if (faceDir == 1 && xSpeed < 0 || faceDir == -1 && xSpeed > 0) {

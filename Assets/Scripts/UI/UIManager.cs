@@ -20,9 +20,8 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    private GameObject notification;
-    private void OnEnable() {
-        notification = GameObject.Find("Notification");
+    public GameObject notification;
+    private void Start() {
         notification.SetActive(false);
     }
 
