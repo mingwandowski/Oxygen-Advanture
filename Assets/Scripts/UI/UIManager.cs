@@ -33,8 +33,10 @@ public class UIManager : MonoBehaviour
     }
 
     private IEnumerator HideNotification() {
+        GameManager.instance.inputControl.Gameplay.Disable();
         yield return new WaitForSeconds(3);
         // TODO: fade out the notification
         notification.SetActive(false);
+        GameManager.instance.inputControl.Gameplay.Enable();
     }
 }

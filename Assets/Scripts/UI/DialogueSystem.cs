@@ -45,6 +45,7 @@ public class DialogueSystem : MonoBehaviour
         currentDialogue = dialogues[name];
         currentDialogueIdx = 0;
         showDialogue = true;
+        GameManager.instance.inputControl.Gameplay.Disable();
         dialogueObject.SetActive(true);
         PlayDialogue(0);
     }
@@ -53,6 +54,7 @@ public class DialogueSystem : MonoBehaviour
         if (currentDialogue.Length <= idx) {
             dialogueObject.SetActive(false);
             showDialogue = false;
+            GameManager.instance.inputControl.Gameplay.Enable();
             return;
         }
         Dialogue dialogue = currentDialogue[idx];
