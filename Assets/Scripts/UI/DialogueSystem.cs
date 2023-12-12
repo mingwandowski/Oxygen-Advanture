@@ -30,6 +30,17 @@ public class DialogueSystem : MonoBehaviour
             new Dialogue(0, "Guajiguaji~ come home for dinner~~~"), 
             new Dialogue(0, "Come on~")
         });
+        dialogues.Add(
+            "squirrel_1", 
+            new Dialogue[7] {
+            new Dialogue(1, "Haha~"), 
+            new Dialogue(1, "You'll never catch me!"), 
+            new Dialogue(1, "I have the toilet paper that you need."),
+            new Dialogue(1, "Do you want it?"),
+            new Dialogue(1, "You'll need to find a pinecone for me first."),
+            new Dialogue(1, "There should be some on the right side, where the monsters are."),
+            new Dialogue(1, "They are hard to see but you can smell it.")
+        });
 
         dialogueObject.SetActive(false);
     }
@@ -45,16 +56,16 @@ public class DialogueSystem : MonoBehaviour
         currentDialogue = dialogues[name];
         currentDialogueIdx = 0;
         showDialogue = true;
-        GameManager.instance.inputControl.Gameplay.Disable();
+        inputControl.Gameplay.Disable();
         dialogueObject.SetActive(true);
-        PlayDialogue(0);
+        PlayDialogue(currentDialogueIdx);
     }
 
     private void PlayDialogue(int idx) {
         if (currentDialogue.Length <= idx) {
             dialogueObject.SetActive(false);
             showDialogue = false;
-            GameManager.instance.inputControl.Gameplay.Enable();
+            inputControl.Gameplay.Enable();
             return;
         }
         Dialogue dialogue = currentDialogue[idx];

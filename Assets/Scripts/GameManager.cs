@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Corgi corgi;
     public DialogueSystem dialogueSystem;
+    public ContextSystem contextSystem;
     public InputControl inputControl;
 
     private void Awake() {

@@ -45,8 +45,14 @@ public class Squirrel : MonoBehaviour
                 anim.SetBool("jump", false);
                 anim.SetBool("idle", true);
                 Rotate();
+                StartCoroutine(StartDialogue());
             }
         }
+    }
+
+    private IEnumerator StartDialogue() {
+        yield return new WaitForSeconds(2f);
+        GameManager.instance.dialogueSystem.ShowDialogue("squirrel_1");
     }
 
     private void FaceToCorgi() {
