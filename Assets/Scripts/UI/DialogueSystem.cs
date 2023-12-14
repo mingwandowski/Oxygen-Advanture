@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,8 @@ public class DialogueSystem : MonoBehaviour
     public Image avatar;
     public TextMeshProUGUI text;
     public Transform nextBtn;
+
+    private Action onCompleted;
 
     private void Awake() {
         inputControl = GameManager.instance.inputControl;
@@ -83,24 +86,27 @@ public class DialogueSystem : MonoBehaviour
     private void Update() {
         if (!showDialogue) return;
         if (canPlayNext && inputControl.UI.Submit.triggered) {
-            PlayDialogue(currentDialogueIdx);
+            PlayDialogue(currentDialogueIdx, onCompleted);
         }
     }
 
-    public void ShowDialogue(string name) {
+    public void ShowDialogue(string name, Action onCompleted = null) {
+        this.onCompleted = onCompleted;
         currentDialogue = dialogues[name];
         currentDialogueIdx = 0;
         showDialogue = true;
         inputControl.Gameplay.Disable();
         dialogueObject.SetActive(true);
-        PlayDialogue(currentDialogueIdx);
+        PlayDialogue(currentDialogueIdx, onCompleted);
     }
 
-    private void PlayDialogue(int idx) {
+    private void PlayDialogue(int idx, Action onCompleted) {
         if (currentDialogue.Length <= idx) {
             dialogueObject.SetActive(false);
             showDialogue = false;
             inputControl.Gameplay.Enable();
+            onCompleted?.Invoke();
+            this.onCompleted = null;
             return;
         }
         Dialogue dialogue = currentDialogue[idx];

@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     public bool isTriggered = false;
     public string dialogue = "";
     private bool isInFrontDoor = false;
+    public bool dialogueFinished = false;
     private bool canShowDialogue = true;
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player") && !isTriggered) {
@@ -29,10 +30,10 @@ public class Door : MonoBehaviour
     private void Update() {
         if (canShowDialogue && isInFrontDoor && dialogue != "") {
             canShowDialogue = false;
-            GameManager.instance.dialogueSystem.ShowDialogue(dialogue);
+            GameManager.instance.dialogueSystem.ShowDialogue(dialogue, () => dialogueFinished = true);
         }
 
-        if (isInFrontDoor && GameManager.instance.inputControl.UI.Submit.triggered) {
+        if ((dialogue == "" || dialogueFinished) && isInFrontDoor && GameManager.instance.inputControl.UI.Submit.triggered) {
             StartCoroutine(LoadNextScene());
         }
     }
