@@ -19,6 +19,7 @@ public class Corgi : MonoBehaviour
     public float jumpForce = 16;
     public int faceDir = 1;
     public bool isSniffing = false;
+    public bool sthInMouth = false;
     #endregion
 
     #region States

@@ -19,6 +19,7 @@ public class CorgiIdleState : CorgiGroundState
 
     public override void Update() {
         base.Update();
+        corgi.SetVelocity(0);
         if (corgi.IsMoving()) {
             stateMachine.ChangeState(corgi.runState);
         }

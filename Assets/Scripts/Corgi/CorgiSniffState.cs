@@ -8,14 +8,14 @@ public class CorgiSniffState : CorgiState
     {
     }
 
-    private GameObject[] bones;
+    private GameObject[] biteables;
 
     public override void EnterState() {
         base.EnterState();
         corgi.SetVelocity(0f);
-        // Find all bones in the scene
-        bones = GameObject.FindGameObjectsWithTag("Bone");
-        ToggleShowBonesOrder(true);
+        // Find all biteables in the scene
+        biteables = GameObject.FindGameObjectsWithTag("Biteable");
+        ToggleShowBiteableOrder(true);
     }
 
     public override void ExitState() {
@@ -25,7 +25,7 @@ public class CorgiSniffState : CorgiState
     public override void Update() {
         base.Update();
         if (!corgi.isSniffing) {
-            ToggleShowBonesOrder(false);
+            ToggleShowBiteableOrder(false);
             stateMachine.ChangeState(corgi.idleState);
         } else if (corgi.IsMoving()) {
             stateMachine.ChangeState(corgi.sniffWalkState);
@@ -36,9 +36,9 @@ public class CorgiSniffState : CorgiState
         base.FixedUpdate();
     }
 
-    protected void ToggleShowBonesOrder(bool show) {
-        foreach (GameObject bone in bones) {
-            bone.GetComponent<Bone>().ToggleShowOrder(show);
+    protected void ToggleShowBiteableOrder(bool show) {
+        foreach (GameObject biteable in biteables) {
+            biteable.GetComponent<Biteable>().ToggleShowOrder(show);
         }
     }
 }

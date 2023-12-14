@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4046199264233943224}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MouthPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7492588106132634213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 495006702458398155}
   - component: {fileID: 1068069657885116194}
   - component: {fileID: 6695592254007670504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Corgi
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -220,12 +220,16 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
   inputDirection: {x: 0, y: 0}
   walkSpeed: 2
   runSpeed: 6
   jumpForce: 14
   faceDir: 1
   isSniffing: 0
+  sthInMouth: 0
 --- !u!61 &1068069657885116194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -235,7 +239,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 9217854952238280443}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c48acd02a99a547f9adaee1f93d98ca3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -280,7 +284,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 9217854952238280443}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c48acd02a99a547f9adaee1f93d98ca3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

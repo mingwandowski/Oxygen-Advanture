@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 723371322233195232}
   - component: {fileID: 5612764801446495083}
   - component: {fileID: 8585280002685672024}
+  - component: {fileID: 1663628027473920439}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -347,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae0e7d5fcc76471da683c27a427c4b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notification: {fileID: 2573608409468528810}
 --- !u!114 &5612764801446495083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,10 +364,25 @@ MonoBehaviour:
   dialogueObject: {fileID: 7426105369681507461}
   sprites:
   - {fileID: 21300000, guid: f6fcd3b36e6a9427db58936139880a24, type: 3}
+  - {fileID: 21300000, guid: 0bdbcf46246814addb4e2fcce069dbab, type: 3}
   avatar: {fileID: 5366493275835116935}
   text: {fileID: 5800624709801456288}
   nextBtn: {fileID: 6269936874317248172}
 --- !u!114 &8585280002685672024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734165198513610717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f1548eb97ba4e858ccafc0d52eaa3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextObject: {fileID: 296799645702430570}
+  contextText: {fileID: 4839498895370987332}
+--- !u!114 &1663628027473920439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

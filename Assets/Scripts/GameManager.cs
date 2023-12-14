@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,5 +24,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         inputControl = new InputControl();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (corgi == null) {
+            corgi = FindObjectOfType<Corgi>();
+        }
     }
 }

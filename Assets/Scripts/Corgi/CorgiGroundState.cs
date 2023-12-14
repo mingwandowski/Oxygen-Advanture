@@ -17,7 +17,6 @@ public class CorgiGroundState : CorgiState
     }
 
     public override void Update() {
-        Debug.Log("ground state");
         base.Update();
         if (corgi.inputControl.Gameplay.Jump.triggered) {
             stateMachine.ChangeState(corgi.jumpState);

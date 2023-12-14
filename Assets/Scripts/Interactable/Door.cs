@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    private bool isTriggered = false;
+    public bool isTriggered = false;
+    public string dialogue = "";
     private bool isInFrontDoor = false;
+    private bool canShowDialogue = true;
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player") && !isTriggered) {
             UIManager.instance.Notify("Press Enter to go inside the door");
@@ -25,6 +27,11 @@ public class Door : MonoBehaviour
     }
 
     private void Update() {
+        if (canShowDialogue && isInFrontDoor && dialogue != "") {
+            canShowDialogue = false;
+            GameManager.instance.dialogueSystem.ShowDialogue(dialogue);
+        }
+
         if (isInFrontDoor && GameManager.instance.inputControl.UI.Submit.triggered) {
             StartCoroutine(LoadNextScene());
         }
@@ -34,6 +41,6 @@ public class Door : MonoBehaviour
         GameManager.instance.corgi.StateMachine.CurrentState.ExitState();
         GameManager.instance.corgi.anim.SetTrigger("sit");
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Scene2");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,11 +19,17 @@ public class ContextSystem : MonoBehaviour
     }
 
     private void Start() {
-        dictionary.Add("start", new string[] {
+        dictionary.Add("scene1_start", new string[] {
             "Long long ago", 
             "There is a cute dog named Oxygen",
             "Oxygen is a good dog",
             "She enjoys her life with her owner every day"
+        });
+
+        dictionary.Add("scene2_start", new string[] {
+            "It's 4:30 pm now.", 
+            "Time to go out for a walk~~",
+            "But!"
         });
     }
 
@@ -30,19 +37,20 @@ public class ContextSystem : MonoBehaviour
         
     }
 
-    public void ShowContext(string name) {
+    public void ShowContext(string name, Action onCompleted = null) {
         currentContext = dictionary[name];
         contextObject.SetActive(true);
         inputControl.Gameplay.Disable();
-        StartCoroutine(PlayContextCoroutine());
+        StartCoroutine(PlayContextCoroutine(onCompleted));
     }
 
-    private IEnumerator PlayContextCoroutine() {
+    private IEnumerator PlayContextCoroutine(Action onCompleted) {
         foreach (string str in currentContext) {
             contextText.text = str;
             yield return new WaitForSeconds(2);
         }
         inputControl.Gameplay.Enable();
         contextObject.SetActive(false);
+        onCompleted?.Invoke();
     }
 }

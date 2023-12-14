@@ -20,7 +20,7 @@ public class CorgiSniffWalkState : CorgiSniffState
     public override void Update() {
         // base.Update();
         if (!corgi.isSniffing) {
-            ToggleShowBonesOrder(false);
+            ToggleShowBiteableOrder(false);
             stateMachine.ChangeState(corgi.idleState);
         } else if (!corgi.IsMoving()) {
             stateMachine.ChangeState(corgi.sniffState);
