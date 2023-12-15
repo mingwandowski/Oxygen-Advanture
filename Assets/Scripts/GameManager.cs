@@ -32,5 +32,9 @@ public class GameManager : MonoBehaviour
         if (corgi == null) {
             corgi = FindObjectOfType<Corgi>();
         }
+
+        if (scene.name == "Scene3") {
+            contextSystem.showContextImage = true;
+        }
     }
 }
