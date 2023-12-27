@@ -80,6 +80,14 @@ public class DialogueSystem : MonoBehaviour
             new Dialogue(0, "Hurry!!!!")
         });
 
+        dialogues.Add(
+            "give_to_mom", 
+            new Dialogue[] {
+            new Dialogue(0, "Oxygen~"), 
+            new Dialogue(0, "What did you find?"), 
+            new Dialogue(0, "Let me take a look!")
+        });
+
         dialogueObject.SetActive(false);
     }
 

@@ -23,6 +23,7 @@ public class SquirrelTriggerPoint : MonoBehaviour
                 squirrel.TriggerRunAway();
             } else {
                 // second trigger
+                triggered = true;
                 GameManager.instance.dialogueSystem.ShowDialogue("squirrel_3");
                 GameObject.FindGameObjectsWithTag("Biteable")[0].GetComponent<Biteable>().ChangeSprite();
                 door.GetComponent<Collider2D>().enabled = true;
